@@ -1,0 +1,30 @@
+spring:
+  datasource:
+    # this JDBC URL connects to a MySQL database named
+    # todolist running on localhost at port 3306, and sets the current schema to todolist
+    url: jdbc:mysql://localhost:3306/todolist?currentSchema=todolist
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      # Automatically update the database schema
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5Dialect
+  sql:
+    init:
+      # This setting determines when SQL initialization should be performed.
+      # 'always' means that SQL initialization will be performed on every application startup.
+      mode: always
+
+      # This setting specifies whether the application should continue running if an error occurs during SQL initialization.
+      # 'false' means that the application will stop if there is an error in the SQL script.
+      continue-on-error: false
+
+      # This setting specifies the location(s) of the SQL script(s) to be executed during initialization.
+      # 'classpath:demo_data.sql' means that the SQL script is located in the classpath with the name 'demo_data.sql'.
+      data-locations: classpath:demo_data.sql
+
